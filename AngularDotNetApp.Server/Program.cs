@@ -32,11 +32,13 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+Console.WriteLine($"Urls from Program.cs before app.StartAsync(): {string.Join(", ", app.Urls)}");
 
 //app.MapControllers();
 // API Endpoint
 app.MapPost("/api/submit", async (UserName username, UserNameFileService fileService) =>
 {
+    Console.WriteLine("inside the username submit............");
     //Check validity of the username
     if((username == null)
         || (String.IsNullOrEmpty(username.LastName))
